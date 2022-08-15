@@ -1,11 +1,7 @@
 import "dotenv/config";
-import "@nomiclabs/hardhat-ethers";
-import "@nomiclabs/hardhat-etherscan";
+import "@nomicfoundation/hardhat-toolbox";
 import "@nomicfoundation/hardhat-chai-matchers";
-import "@typechain/hardhat";
 import "@nomiclabs/hardhat-solhint";
-import "solidity-coverage";
-import "hardhat-gas-reporter";
 import "hardhat-tracer";
 
 import { HardhatUserConfig } from "hardhat/types";
@@ -23,7 +19,7 @@ const config: HardhatUserConfig = {
     solidity: {
         compilers: [
             {
-                version: "0.8.15",
+                version: "0.8.16",
                 settings: {
                     optimizer: {
                         enabled: true,
@@ -35,9 +31,30 @@ const config: HardhatUserConfig = {
     },
     networks: {
         mainnet: {
-            url: `https://mainnet.infura.io/v3/${process.env.INFURA_API_KEY}` || "",
+            url: `https://mainnet.infura.io/v3/${process.env.INFURA_API_KEY}`,
             accounts,
             chainId: 1,
+        },
+        polygon: {
+            url: `https://polygon-mainnet.infura.io/v3/${process.env.INFURA_API_KEY}`,
+            accounts,
+            chainId: 137,
+        },
+        klaytn: {
+            url: "https://public-node-api.klaytnapi.com/v1/cypress",
+            accounts,
+            chainId: 8217,
+            gasPrice: 250000000000,
+        },
+        mumbai: {
+            url: `https://polygon-mumbai.infura.io/v3/${process.env.INFURA_API_KEY}`,
+            accounts,
+            chainId: 80001,
+        },
+        baobab: {
+            url: "https://public-node-api.klaytnapi.com/v1/baobab",
+            accounts,
+            chainId: 1001,
         },
         popcateum: {
             url: "https://dataseed.popcateum.org",
@@ -47,6 +64,9 @@ const config: HardhatUserConfig = {
     },
     etherscan: {
         apiKey: process.env.ETHERSCAN_API_KEY,
+    },
+    gasReporter: {
+        enabled: process.env.REPORT_GAS === "true",
     },
 };
 
