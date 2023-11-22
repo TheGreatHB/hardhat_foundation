@@ -7,8 +7,7 @@
         "tabWidth": 4,
         "useTabs": false,
         "singleQuote": false,
-        "bracketSpacing": false,
-        "explicitTypes": "always"
+        "bracketSpacing": false
       }
     },
     {
@@ -19,8 +18,7 @@
         "useTabs": false,
         "singleQuote": false,
         "bracketSpacing": true,
-        "arrowParens": "avoid",
-        "explicitTypes": "always"
+        "arrowParens": "avoid"
       }
     }
   ]

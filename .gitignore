@@ -30,3 +30,7 @@ artifacts
 
 # typechain
 typechain*
+
+# solidity-coverage files
+/coverage
+/coverage.json
